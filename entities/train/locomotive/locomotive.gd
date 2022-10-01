@@ -4,18 +4,65 @@ extends CharacterBody2D
 @export_range(0, 100) var move_speed: float = 20
 
 var tilemap: TileMap
+var move_direction: Vector2i = Vector2i(1, 0)
 
-const KEY_IS_TRACK = "IsTrack"
-const KEY_TRACK_LEFT = "TrackLeft"
-const KEY_TRACK_RIGHT = "TrackRight"
-const KEY_TRACK_TOP = "TrackTop"
-const KEY_TRACK_BOTTOM = "TrackBottom"
+const TRACK_WIDTH: float = 16
+const TRACK_TILE_CENTER = TRACK_WIDTH / 2.0
+	
+const DATA_IS_TRACK = "IsTrack"
+const DATA_TRACK_LEFT = "TrackLeft"
+const DATA_TRACK_RIGHT = "TrackRight"
+const DATA_TRACK_TOP = "TrackTop"
+const DATA_TRACK_BOTTOM = "TrackBottom"
 
 func get_tile_data(): 
 	var coordinate = tilemap.local_to_map(get_position())
 	if tilemap.get_cell_source_id(layer_track, coordinate) == -1:
 		return
 	return tilemap.get_cell_tile_data(layer_track, coordinate)
+
+func follow_track(tile_data: TileData):
+	var position_in_tile = Vector2(roundf(fmod(position.x, TRACK_WIDTH)), roundf(fmod(position.y, TRACK_WIDTH)))
+
+
+	var left: bool = tile_data.get_custom_data(DATA_TRACK_LEFT)
+	var right: bool = tile_data.get_custom_data(DATA_TRACK_RIGHT)
+	var top: bool = tile_data.get_custom_data(DATA_TRACK_TOP)
+	var bottom: bool = tile_data.get_custom_data(DATA_TRACK_BOTTOM)
+
+	# set the source to false to avoid moving back or just do nothing if not over the half of the tile
+	if move_direction == Vector2i(1, 0): # from left
+		if position_in_tile.x >= TRACK_TILE_CENTER:
+			return
+		
+		left = false
+	if move_direction == Vector2i(-1, 0): # from right
+		if position_in_tile.x <= TRACK_TILE_CENTER:
+			return
+
+		right = false
+	if move_direction == Vector2i(0, 1): # from top
+		if position_in_tile.y >= TRACK_TILE_CENTER:
+			return
+
+		top = false
+	if move_direction == Vector2i(0, -1): # from bottom
+		if position_in_tile.y <= TRACK_TILE_CENTER:
+			return
+
+		bottom = false
+
+	if left: 
+		move_direction = Vector2i(-1, 0)
+	if right: 
+		move_direction = Vector2i(1, 0)
+	if top: 
+		move_direction = Vector2i(0, -1)
+	if bottom: 
+		move_direction = Vector2i(0, 1)
+
+	return
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,7 +80,17 @@ func _physics_process(_delta):
 	if (data == null):
 		return
 	
-	if data.get_custom_data(KEY_IS_TRACK):
-		velocity = Vector2(1, 0) * move_speed
-		
+	if !data.get_custom_data(DATA_IS_TRACK):
+		return
+
+	follow_track(data)
+	
+	# Just move forward
+	velocity = move_direction * move_speed
+
+	if move_direction.x == 0:
+		position.x = tilemap.local_to_map(get_position()).x * TRACK_WIDTH + TRACK_TILE_CENTER
+	if move_direction.y == 0:
+		position.y = tilemap.local_to_map(get_position()).y * TRACK_WIDTH + TRACK_TILE_CENTER
+
 	move_and_slide()
