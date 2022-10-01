@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkago7u685k0m"]
+
+[ext_resource type="PackedScene" uid="uid://chup5kpuggs6k" path="res://scenes/map.tscn" id="1_lh002"]
+[ext_resource type="PackedScene" uid="uid://diei4x6oj2x81" path="res://entities/train/locomotive/locomotive.tscn" id="2_kt048"]
+
+[node name="main" type="Node2D"]
+
+[node name="Map" parent="." instance=ExtResource("1_lh002")]
+
+[node name="Locomotive" parent="." instance=ExtResource("2_kt048")]
+position = Vector2(8, 88)
