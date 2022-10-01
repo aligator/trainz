@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export_range(0, 100) var layer_track: int = 1
-@export_range(0, 100) var move_speed: float = 20
+@export_range(0, 100) var move_speed: float = 30
 
 var tilemap: TileMap
 var move_direction: Vector2i = Vector2i(1, 0)
@@ -63,10 +63,24 @@ func follow_track(tile_data: TileData):
 
 	return
 
+func rotate_train():
+	if move_direction == Vector2i(1, 0):
+		rotation = deg_to_rad(0)
+
+	if move_direction == Vector2i(-1, 0):
+		rotation = deg_to_rad(180)
+
+	if move_direction == Vector2i(0, 1):
+		rotation = deg_to_rad(90)
+	
+	if move_direction == Vector2i(0, -1):
+		rotation = deg_to_rad(270)
+
+	return
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	tilemap = get_parent()
+	pass
 
 
 
@@ -75,6 +89,9 @@ func _process(_delta):
 	pass
 
 func _physics_process(_delta):
+	if 	tilemap == null:
+		tilemap = get_parent()
+	
 	var data = get_tile_data()
 
 	if (data == null):
@@ -88,9 +105,12 @@ func _physics_process(_delta):
 	# Just move forward
 	velocity = move_direction * move_speed
 
+	# Keep at the center
 	if move_direction.x == 0:
 		position.x = tilemap.local_to_map(get_position()).x * TRACK_WIDTH + TRACK_TILE_CENTER
 	if move_direction.y == 0:
 		position.y = tilemap.local_to_map(get_position()).y * TRACK_WIDTH + TRACK_TILE_CENTER
+
+	rotate_train()
 
 	move_and_slide()

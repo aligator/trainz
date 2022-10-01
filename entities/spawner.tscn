@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://br2kbnhr68nb7"]
+
+[ext_resource type="Script" path="res://entities/spawner.gd" id="1_5pgy7"]
+[ext_resource type="PackedScene" uid="uid://diei4x6oj2x81" path="res://entities/train/locomotive/locomotive.tscn" id="2_kdg3m"]
+
+[node name="spawner" type="Node2D"]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+script = ExtResource("1_5pgy7")
+entity = ExtResource("2_kdg3m")
