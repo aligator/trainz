@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://diei4x6oj2x81"]
+[gd_scene load_steps=4 format=3 uid="uid://diei4x6oj2x81"]
 
 [ext_resource type="Texture2D" uid="uid://d0sxnw8xtkgew" path="res://entities/train/locomotive/locomotive.png" id="1_kxoyg"]
 [ext_resource type="Script" path="res://entities/train/locomotive/locomotive.gd" id="1_qxqnx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m61et"]
+size = Vector2(16, 6)
 
 [node name="Locomotive" type="CharacterBody2D"]
 z_index = 1
@@ -11,3 +14,6 @@ script = ExtResource("1_qxqnx")
 scale = Vector2(0.5, 0.5)
 z_index = 1
 texture = ExtResource("1_kxoyg")
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_m61et")
