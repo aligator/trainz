@@ -6,7 +6,7 @@
 [node name="spawner" type="Node2D"]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 2.0
 autostart = true
 script = ExtResource("1_5pgy7")
 entity = ExtResource("2_kdg3m")

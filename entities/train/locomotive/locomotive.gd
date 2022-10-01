@@ -15,6 +15,8 @@ const DATA_TRACK_RIGHT = "TrackRight"
 const DATA_TRACK_TOP = "TrackTop"
 const DATA_TRACK_BOTTOM = "TrackBottom"
 
+const explosion = preload("res://effects/Explosion.tscn")
+
 func get_tile_data(): 
 	var coordinate = tilemap.local_to_map(get_position())
 	if tilemap.get_cell_source_id(layer_track, coordinate) == -1:
@@ -89,6 +91,9 @@ func _process(_delta):
 	pass
 
 func _physics_process(_delta):
+	if move_direction == Vector2i(0, 0):
+		return
+	
 	if 	tilemap == null:
 		tilemap = get_parent()
 	
@@ -112,5 +117,23 @@ func _physics_process(_delta):
 		position.y = tilemap.local_to_map(get_position()).y * TRACK_WIDTH + TRACK_TILE_CENTER
 
 	rotate_train()
-
 	move_and_slide()
+
+func _on_collision_detector_body_entered(body):
+	if body == self:
+		return
+	
+	if body.has_method("die"):
+		body.die()
+		die()
+
+
+func die():
+	move_direction = Vector2(0, 0)
+
+	var new_explosion: GPUParticles2D = explosion.instantiate()
+	add_child(new_explosion)
+	new_explosion.global_position = global_position
+	await new_explosion.get_node("Timer").timeout
+	
+	queue_free()

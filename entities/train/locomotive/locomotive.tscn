@@ -1,19 +1,42 @@
-[gd_scene load_steps=4 format=3 uid="uid://diei4x6oj2x81"]
+[gd_scene load_steps=6 format=3 uid="uid://diei4x6oj2x81"]
 
 [ext_resource type="Texture2D" uid="uid://d0sxnw8xtkgew" path="res://entities/train/locomotive/locomotive.png" id="1_kxoyg"]
 [ext_resource type="Script" path="res://entities/train/locomotive/locomotive.gd" id="1_qxqnx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m61et"]
-size = Vector2(16, 6)
+size = Vector2(1.33635, 6.20845)
 
-[node name="Locomotive" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b08p0"]
+size = Vector2(0.944941, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0w7n"]
+size = Vector2(10.4402, 6)
+
+[node name="Locomotive" type="CharacterBody2D" groups=["locomotive"]]
 z_index = 1
+collision_layer = 6
 script = ExtResource("1_qxqnx")
+move_speed = 100.0
 
 [node name="Sprite2d" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 z_index = 1
 texture = ExtResource("1_kxoyg")
 
-[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+[node name="CollisionFront" type="CollisionShape2D" parent="."]
+position = Vector2(6.53835, -0.140028)
 shape = SubResource("RectangleShape2D_m61et")
+
+[node name="CollisionBack" type="CollisionShape2D" parent="."]
+position = Vector2(-6.79753, 0)
+shape = SubResource("RectangleShape2D_b08p0")
+
+[node name="CollisionDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="CollisionDetector"]
+position = Vector2(-0.185154, 0)
+shape = SubResource("RectangleShape2D_w0w7n")
+
+[connection signal="body_entered" from="CollisionDetector" to="." method="_on_collision_detector_body_entered"]
