@@ -24,6 +24,7 @@ scale_max = 2.0
 color_ramp = SubResource("GradientTexture1D_6xn0n")
 
 [node name="Explosion" type="GPUParticles2D"]
+z_index = 100
 emitting = false
 amount = 256
 lifetime = 0.4
