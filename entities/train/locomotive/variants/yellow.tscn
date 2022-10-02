@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dipvx8cwfdi6b" path="res://entities/train/locomotive/variants/locomotive_yellow.png" id="2_qoy24"]
 
 [node name="Locomotive" instance=ExtResource("1_p73j2")]
+train_color = Color(0.870588, 0.917647, 0, 1)
 
 [node name="Sprite2d" parent="." index="0"]
 texture = ExtResource("2_qoy24")
