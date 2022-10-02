@@ -17,11 +17,13 @@ func calculate_bounds():
 	for pos in used_cells:
 		if pos.x > max_x:
 			max_x = int(pos.x)
-		elif pos.y > max_y:
+		if pos.y > max_y:
 			max_y = int(pos.y)
 
 	max_x *= 16
+	max_x += 16
 	max_y *= 16
+	max_y += 16
 
 
 func _physics_process(delta):
@@ -42,11 +44,11 @@ func _physics_process(delta):
 	if current_pos.y <= 0:
 		current_pos.y = 0
 	
-	if current_pos.x >= max_x - camera.get_viewport_rect().size.x:
-		current_pos.x = max_x - camera.get_viewport_rect().size.x
+	if current_pos.x >= max_x - get_viewport_rect().size.x:
+		current_pos.x = max_x - get_viewport_rect().size.x
 		
-	if current_pos.y >= max_y - camera.get_viewport_rect().size.y:
-		current_pos.y = max_y - camera.get_viewport_rect().size.y
+	if current_pos.y >= max_y - get_viewport_rect().size.y:
+		current_pos.y = max_y - get_viewport_rect().size.y
 		
 	
 	camera.set_position(current_pos)
