@@ -3,7 +3,13 @@ extends Timer
 @export var entities: Array[PackedScene]
 
 func spawn():
-	var entity = entities[randi_range(0, entities.size()-1)]
+	var max_trains = 2
+	if Global.points >= 10:
+		max_trains = 3
+	if Global.points >= 15:
+		max_trains = 4
+	
+	var entity = entities[randi_range(0, max_trains-1)]
 	
 	var newEntity = entity.instantiate()
 	newEntity.position = get_parent().position

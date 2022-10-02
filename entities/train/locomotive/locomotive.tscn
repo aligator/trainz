@@ -42,7 +42,7 @@ color_ramp = SubResource("GradientTexture1D_g47xc")
 z_index = 1
 collision_layer = 6
 script = ExtResource("1_qxqnx")
-move_speed = 55.303
+move_speed = 18.182
 
 [node name="Sprite2d" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.8" tiledversion="1.8.6" name="Trainz" tilewidth="16" tileheight="16" tilecount="9" columns="0">
+<tileset version="1.8" tiledversion="1.8.6" name="Trainz" tilewidth="16" tileheight="16" tilecount="14" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image width="16" height="16" source="curve.png"/>
@@ -27,5 +27,20 @@
  </tile>
  <tile id="8">
   <image width="16" height="16" source="depot_red.png"/>
+ </tile>
+ <tile id="9">
+  <image width="16" height="16" source="tree.png"/>
+ </tile>
+ <tile id="10">
+  <image width="16" height="16" source="tree2.png"/>
+ </tile>
+ <tile id="11">
+  <image width="16" height="16" source="water.png"/>
+ </tile>
+ <tile id="12">
+  <image width="16" height="16" source="water_full.png"/>
+ </tile>
+ <tile id="13">
+  <image width="16" height="16" source="water_side.png"/>
  </tile>
 </tileset>
