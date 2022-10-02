@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://diei4x6oj2x81"]
+[gd_scene load_steps=9 format=3 uid="uid://diei4x6oj2x81"]
 
 [ext_resource type="Texture2D" uid="uid://d0sxnw8xtkgew" path="res://entities/train/locomotive/locomotive.png" id="1_kxoyg"]
 [ext_resource type="Script" path="res://entities/train/locomotive/locomotive.gd" id="1_qxqnx"]
 [ext_resource type="AudioStream" uid="uid://bn7vbsfluif0t" path="res://sound/tsch.mp3" id="3_kdfah"]
 [ext_resource type="AudioStream" uid="uid://f1u83vgoiulo" path="res://sound/tuut.mp3" id="4_vnek8"]
+[ext_resource type="AudioStream" uid="uid://bs7meoatxjqvs" path="res://sound/bing.mp3" id="5_dmhhh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m61et"]
 size = Vector2(1.33635, 6.20845)
@@ -52,5 +53,12 @@ autoplay = true
 stream = ExtResource("4_vnek8")
 volume_db = -11.044
 autoplay = true
+
+[node name="AudioBing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_dmhhh")
+
+[node name="BingTimer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
 
 [connection signal="body_entered" from="CollisionDetector" to="." method="_on_collision_detector_body_entered"]

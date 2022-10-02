@@ -15,18 +15,31 @@ offset_bottom = 29.0
 
 [node name="HeartsEmpty" type="TextureRect" parent="Panel"]
 offset_left = 2.0
-offset_top = 3.0
+offset_top = 2.0
 offset_right = 98.0
-offset_bottom = 35.0
+offset_bottom = 34.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_hkt6h")
 stretch_mode = 1
 
 [node name="HeartsFull" type="TextureRect" parent="Panel"]
 offset_left = 2.0
-offset_top = 3.0
+offset_top = 2.0
 offset_right = 98.0
-offset_bottom = 35.0
+offset_bottom = 34.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_quf6y")
 stretch_mode = 1
+
+[node name="Panel2" type="Panel" parent="."]
+offset_left = 8.0
+offset_top = 32.0
+offset_right = 59.0
+offset_bottom = 53.0
+
+[node name="Points" type="Label" parent="Panel2"]
+offset_left = 5.0
+offset_top = -1.0
+offset_right = 47.0
+offset_bottom = 25.0
+text = "####"

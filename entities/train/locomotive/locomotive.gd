@@ -28,6 +28,7 @@ const DIR_TOP = Vector2i(0, -1)
 const DIR_BOTTOM = Vector2i(0, 1)
 
 var dead = false
+var in_depot = false
 
 func get_tile_data(): 
 	var coordinate = tilemap.local_to_map(get_position())
@@ -46,7 +47,7 @@ func follow_track(tile_data: TileData):
 	var is_depot: bool = tile_data.get_custom_data(DATA_IS_DEPOT)
 	
 	if is_depot && position_in_tile.x >= TRACK_TILE_CENTER-2:
-		in_depot(tile_data)
+		check_in_depot(tile_data)
 		return
 	
 	
@@ -137,10 +138,20 @@ func _physics_process(_delta):
 	rotate_train()
 	move_and_slide()
 
-func in_depot(tile_data: TileData):
+func check_in_depot(tile_data: TileData):
+	if in_depot: 
+		return
+		
+	in_depot = true
+	
 	var depot_color: Color = tile_data.get_custom_data(DATA_DEPOT_COLOR)
 	
 	if depot_color.is_equal_approx(train_color):
+		Global.increment_points()
+		visible = false
+		$AudioBing.play()
+		$BingTimer.start()
+		await $BingTimer.timeout
 		queue_free()
 	else:
 		die()
