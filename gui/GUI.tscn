@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpdgvvqhy0fi7"]
+[gd_scene load_steps=5 format=3 uid="uid://cpdgvvqhy0fi7"]
 
 [ext_resource type="Script" path="res://gui/GUI.gd" id="1_8f5lt"]
 [ext_resource type="Texture2D" uid="uid://cln60vsgfon3j" path="res://gui/heart_full.png" id="1_quf6y"]
 [ext_resource type="Texture2D" uid="uid://dkjq3md0o8uau" path="res://gui/heart_empty.png" id="2_hkt6h"]
+[ext_resource type="PackedScene" uid="uid://bymkfdel227c4" path="res://gui/death_screen/death_screen.tscn" id="4_wxjln"]
 
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource("1_8f5lt")
@@ -43,3 +44,8 @@ offset_top = -1.0
 offset_right = 47.0
 offset_bottom = 25.0
 text = "####"
+
+[node name="death_screen" parent="." instance=ExtResource("4_wxjln")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
