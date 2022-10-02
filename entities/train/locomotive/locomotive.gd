@@ -27,6 +27,8 @@ const DIR_RIGHT = Vector2i(1, 0)
 const DIR_TOP = Vector2i(0, -1)
 const DIR_BOTTOM = Vector2i(0, 1)
 
+var dead = false
+
 func get_tile_data(): 
 	var coordinate = tilemap.local_to_map(get_position())
 	if tilemap.get_cell_source_id(layer_track, coordinate) == -1:
@@ -148,10 +150,18 @@ func _on_collision_detector_body_entered(body):
 		return
 	
 	if body.has_method("die"):
-		body.die()
+		body.die(false)
 		die()
 
-func die():
+func die(decrement_lives: bool = true):
+	if dead:
+		return
+		
+	dead = true
+	
+	if decrement_lives:
+		Global.decrement_lives()
+		
 	move_direction = DIR_NONE
 
 	var new_explosion: GPUParticles2D = explosion.instantiate()

@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpdgvvqhy0fi7"]
+
+[ext_resource type="Script" path="res://gui/GUI.gd" id="1_8f5lt"]
+[ext_resource type="Texture2D" uid="uid://cln60vsgfon3j" path="res://gui/heart_full.png" id="1_quf6y"]
+[ext_resource type="Texture2D" uid="uid://dkjq3md0o8uau" path="res://gui/heart_empty.png" id="2_hkt6h"]
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource("1_8f5lt")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 59.0
+offset_bottom = 29.0
+
+[node name="HeartsEmpty" type="TextureRect" parent="Panel"]
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 98.0
+offset_bottom = 35.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_hkt6h")
+stretch_mode = 1
+
+[node name="HeartsFull" type="TextureRect" parent="Panel"]
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 98.0
+offset_bottom = 35.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_quf6y")
+stretch_mode = 1
