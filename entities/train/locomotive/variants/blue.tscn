@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyk5uxu7u1o4k"]
+
+[ext_resource type="PackedScene" uid="uid://diei4x6oj2x81" path="res://entities/train/locomotive/locomotive.tscn" id="1_cj8ce"]
+[ext_resource type="Texture2D" uid="uid://vumd65pow7m8" path="res://entities/train/locomotive/variants/locomotive_blue.png" id="2_7n8v0"]
+
+[node name="Locomotive" instance=ExtResource("1_cj8ce")]
+train_color = Color(0.12549, 0, 0.917647, 1)
+
+[node name="Sprite2d" parent="." index="0"]
+texture = ExtResource("2_7n8v0")

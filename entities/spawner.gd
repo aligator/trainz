@@ -1,8 +1,10 @@
 extends Timer
 
-@export var entity: PackedScene
+@export var entities: Array[PackedScene]
 
 func spawn():
+	var entity = entities[randi_range(0, entities.size()-1)]
+	
 	var newEntity = entity.instantiate()
 	newEntity.position = get_parent().position
 	get_parent().get_parent().call_deferred("add_child", newEntity)

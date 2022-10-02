@@ -43,12 +43,12 @@ shape = SubResource("RectangleShape2D_w0w7n")
 
 [node name="AudioTsch" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_kdfah")
-volume_db = -23.929
+volume_db = -11.044
 autoplay = true
 
 [node name="AudioTuut" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_vnek8")
-volume_db = -20.954
+volume_db = -11.044
 autoplay = true
 
 [connection signal="body_entered" from="CollisionDetector" to="." method="_on_collision_detector_body_entered"]
