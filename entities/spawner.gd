@@ -23,3 +23,6 @@ func _ready():
 func _physics_process(_delta):
 	if Global.lives == 0:
 		stop()
+		
+	Global.time_left = time_left
+

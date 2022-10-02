@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://br2kbnhr68nb7"]
 
 [ext_resource type="Script" path="res://entities/spawner.gd" id="1_5pgy7"]
-[ext_resource type="PackedScene" uid="uid://dm3ub47caxn6u" path="res://entities/train/locomotive/variants/yellow.tscn" id="2_b135k"]
+[ext_resource type="PackedScene" uid="uid://br744xmm74c3w" path="res://entities/train/locomotive/variants/yellow.tscn" id="2_b135k"]
 [ext_resource type="PackedScene" uid="uid://dhe2hx08vd1tx" path="res://entities/train/locomotive/variants/red.tscn" id="3_08qj6"]
 [ext_resource type="PackedScene" uid="uid://cjgmv4jm7do4l" path="res://entities/train/locomotive/variants/orange.tscn" id="4_jlm62"]
 [ext_resource type="PackedScene" uid="uid://dyk5uxu7u1o4k" path="res://entities/train/locomotive/variants/blue.tscn" id="5_t7edq"]

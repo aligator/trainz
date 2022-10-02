@@ -110,6 +110,9 @@ func _process(_delta):
 	pass
 
 func _physics_process(_delta):
+	if Global.lives == 0:
+		return
+	
 	if move_direction == DIR_NONE:
 		return
 	

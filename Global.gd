@@ -2,6 +2,7 @@ extends Node
 
 var max_lives = 3
 var lives = max_lives
+var time_left = 0
 
 var points = 0
 

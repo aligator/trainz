@@ -4,6 +4,7 @@ extends CanvasLayer
 func _process(_delta):
 	load_hearts()
 	load_points()
+	load_timeout()
 
 func load_hearts():
 	var newSize = Global.lives * 32
@@ -13,3 +14,6 @@ func load_hearts():
 
 func load_points():
 	$Panel2/Points.text = str(Global.points)
+
+func load_timeout():
+	$Panel3/Time.text = "Next trains arrive in " + str(roundf(Global.time_left)) + " seconds..."

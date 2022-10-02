@@ -1,12 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dm3ub47caxn6u"]
+[gd_scene load_steps=3 format=3 uid="uid://br744xmm74c3w"]
 
 [ext_resource type="PackedScene" uid="uid://diei4x6oj2x81" path="res://entities/train/locomotive/locomotive.tscn" id="1_p73j2"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ubulv"]
-load_path = "res://.godot/imported/locomotive_yellow.png-a8df66bfaf5af210349bed600813850a.ctex"
+[ext_resource type="Texture2D" uid="uid://dipvx8cwfdi6b" path="res://entities/train/locomotive/variants/locomotive_yellow.png" id="2_qoy24"]
 
 [node name="Locomotive" instance=ExtResource("1_p73j2")]
-train_color = Color(0.870588, 0.917647, 0, 1)
 
 [node name="Sprite2d" parent="." index="0"]
-texture = SubResource("CompressedTexture2D_ubulv")
+texture = ExtResource("2_qoy24")
