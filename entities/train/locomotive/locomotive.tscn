@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://diei4x6oj2x81"]
+[gd_scene load_steps=12 format=3 uid="uid://diei4x6oj2x81"]
 
 [ext_resource type="Texture2D" uid="uid://d0sxnw8xtkgew" path="res://entities/train/locomotive/locomotive.png" id="1_kxoyg"]
 [ext_resource type="Script" path="res://entities/train/locomotive/locomotive.gd" id="1_qxqnx"]
@@ -14,6 +14,29 @@ size = Vector2(0.944941, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w0w7n"]
 size = Vector2(10.4402, 6)
+
+[sub_resource type="Gradient" id="Gradient_yn64k"]
+offsets = PackedFloat32Array(0.00540541, 1)
+colors = PackedColorArray(0.54099, 0.54099, 0.54099, 1, 0.907942, 0.907942, 0.907942, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_g47xc"]
+gradient = SubResource("Gradient_yn64k")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vy67n"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 3.0
+emission_ring_inner_radius = 0.0
+particle_flag_disable_z = true
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.1
+scale_max = 0.3
+color = Color(0.898039, 0.898039, 0.898039, 1)
+color_ramp = SubResource("GradientTexture1D_g47xc")
 
 [node name="Locomotive" type="CharacterBody2D" groups=["locomotive"]]
 z_index = 1
@@ -59,5 +82,13 @@ volume_db = 24.0
 [node name="BingTimer" type="Timer" parent="."]
 wait_time = 0.7
 one_shot = true
+
+[node name="Smoke" type="GPUParticles2D" parent="."]
+position = Vector2(4.09375, 0)
+z_index = 1
+amount = 600
+lifetime = 0.5
+randomness = 0.57
+process_material = SubResource("ParticleProcessMaterial_vy67n")
 
 [connection signal="body_entered" from="CollisionDetector" to="." method="_on_collision_detector_body_entered"]
