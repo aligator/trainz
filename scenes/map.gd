@@ -7,12 +7,22 @@ const DATA_SWITCH_TO = "SwitchTo"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$HoverSwitch.visible = false
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
+func _physics_process(_delta):
+	$HoverSwitch.visible = false
+	
+	var coordinate = get_local_mouse_position()
+	var tile = get_tile_data(coordinate)
+	if tile == null:
+		return
+	
+	$HoverSwitch.visible = tile.get_custom_data(DATA_IS_TRACK) == true
+	if $HoverSwitch.visible:
+		$HoverSwitch.position = map_to_local(local_to_map(coordinate))
 	
 func get_tile_data(coordinate: Vector2i): 
 	if get_cell_source_id(layer_track, local_to_map(coordinate)) == -1:
@@ -36,4 +46,4 @@ func _input(event):
 	# Mouse in viewport coordinates.
 	if event is InputEventMouseButton:	
 		if event.pressed:
-			switch(event.position)
+			switch(get_local_mouse_position())

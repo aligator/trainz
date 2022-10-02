@@ -14,6 +14,6 @@ func _ready():
 	timeout.connect(spawn)
 	spawn()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Global.lives == 0:
 		stop()

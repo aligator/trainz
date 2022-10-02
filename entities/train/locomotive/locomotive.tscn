@@ -19,7 +19,7 @@ size = Vector2(10.4402, 6)
 z_index = 1
 collision_layer = 6
 script = ExtResource("1_qxqnx")
-move_speed = 100.0
+move_speed = 55.303
 
 [node name="Sprite2d" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
