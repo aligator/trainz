@@ -12,17 +12,14 @@ grow_vertical = 2
 script = ExtResource("1_tgdwf")
 
 [node name="Panel" type="Panel" parent="."]
-layout_mode = 0
 offset_right = 320.0
 offset_bottom = 184.0
 
 [node name="CenterContainer" type="CenterContainer" parent="Panel"]
-layout_mode = 0
 offset_right = 320.0
 offset_bottom = 184.0
 
 [node name="Label" type="Label" parent="Panel/CenterContainer"]
-layout_mode = 2
 offset_left = 65.0
 offset_top = 76.0
 offset_right = 254.0
